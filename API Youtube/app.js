@@ -2,11 +2,11 @@ var _objeto = null,
     _data = { part: 'contentDetails', forUsername: '1taldemarvin', key: 'AIzaSyBM3XlO94bHBN6P8AbfG4w4Z-JSWOhDYrM' };
 
 function sucesso(objeto){
-    _objeto = objeto;
+    listarPlaylists(objeto.items);
 }
 
 function erro(objeto){
-    _objeto = objeto;
+    console.log(objeto.responseJSON.error.message);
 }
 
 function listarPlaylists(lista){

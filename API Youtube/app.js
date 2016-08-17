@@ -33,7 +33,7 @@ var YTVideo = function () {
         elemento.html("");
 
         for (var i = 0; i < count; i++) {
-            elemento.append('<li><strong>' + lista.items[i].snippet.title + '</strong><iframe width=250 height=250 src=https://www.youtube.com/embed/' + lista.items[i].id + '></iframe></li>')
+            elemento.append('<p><strong>' + lista.items[i].snippet.title + '</strong></p><p><iframe width="420" height="315" src="https://www.youtube.com/embed/' + lista.items[i].snippet.resourceId.videoId + '" frameborder="0" allowfullscreen></iframe>></p>')
         }
     }
 

@@ -10,21 +10,27 @@ firebase.initializeApp(config);
 
 var provider = new firebase.auth.GoogleAuthProvider();
 
-provider.addScope('https://www.googleapis.com/auth/plus.login');
+if (firebase.auth().currentUser == null) {
 
-firebase.auth().signInWithPopup(provider).then(function (result) {
-  var token = result.credential.accessToken;
-  var user = result.user;
+  firebase.auth().signInWithRedirect(provider);
 
-  if (user != null)
-    $("[usuario]").text(user.displayName);
-    
-}).catch(function (error) {
-  var errorCode = error.code;
-  var errorMessage = error.message;
-  var email = error.email;
-  var credential = error.credential;
-});
+  firebase.auth().getRedirectResult().then(function (result) {
+    if (result.credential) {
+      var token = result.credential.accessToken;
+    }
+    var user = result.user;
+
+    if (user != null)
+      $("[usuario]").text(user.displayName);
+  }).catch(function (error) {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    var email = error.email;
+    var credential = error.credential;
+
+    console.log(errorMessage);
+  });
+}
 
 firebase.auth().onAuthStateChanged(function (user) {
   if (user != null)

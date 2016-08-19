@@ -1,5 +1,3 @@
-//fonte: http://pt.stackoverflow.com/questions/64257/galeria-de-v%C3%ADdeos-do-youtube-em-php-e-ou-javascript
-
 var YTVideo = function () {
 
     var key = 'AIzaSyBM3XlO94bHBN6P8AbfG4w4Z-JSWOhDYrM';
@@ -19,7 +17,7 @@ var YTVideo = function () {
     }
 
     function listarPlaylists(lista) {
-        var _tabela = $('.table');
+        var _tabela = $('[videos]');
         var _itens = "";
         var _tamanho = lista.items.length;
 
